@@ -35,6 +35,53 @@ public class RoverPosition {
         this.facing = facing;
     }
 
+    public void move(char instruction){
+        if(instruction == 'L'){
+            turnLeft();
+        } else if (instruction =='R') {
+            turnRight();
+        } else if (instruction == 'M') {
+            move();
+        }
+    }
+
+    private void turnLeft() {
+        if (facing == CompassDirection.N) {
+            facing = CompassDirection.W;
+        } else if (facing == CompassDirection.W) {
+            facing = CompassDirection.S;
+        } else if (facing == CompassDirection.S) {
+            facing = CompassDirection.E;
+        } else if (facing == CompassDirection.E) {
+            facing = CompassDirection.N;
+        }
+        }
+
+        private void turnRight() {
+            if (facing == CompassDirection.N) {
+                facing = CompassDirection.E;
+            } else if (facing == CompassDirection.E) {
+                facing = CompassDirection.S;
+            } else if (facing == CompassDirection.S) {
+                facing = CompassDirection.W;
+            } else if (facing == CompassDirection.W) {
+                facing = CompassDirection.N;
+            }
+        }
+
+    public void move(){
+        if(facing == CompassDirection.N){
+            y++;
+        } else if (facing == CompassDirection.E) {
+            x++;
+        } else if (facing == CompassDirection.S) {
+            y--;
+        } else if (facing == CompassDirection.W) {
+            x--;
+        }
+
+    }
+
     @Override
     public String toString() {
         return "Position{" +
