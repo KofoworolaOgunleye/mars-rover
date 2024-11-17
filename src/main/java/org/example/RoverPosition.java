@@ -41,7 +41,7 @@ public class RoverPosition {
         } else if (instruction =='R') {
             turnRight();
         } else if (instruction == 'M') {
-            move();
+            moveForward();
         }
     }
 
@@ -69,7 +69,7 @@ public class RoverPosition {
             }
         }
 
-    public void move(){
+    public void moveForward(){
         if(facing == CompassDirection.N){
             y++;
         } else if (facing == CompassDirection.E) {
