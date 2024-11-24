@@ -1,10 +1,10 @@
 package org.example.InputParser;
 
 import org.example.CompassDirection;
-import org.example.RoverPosition;
+import org.example.Rover;
 
 public class RoverPositionParser {
-    public  static RoverPosition roverPositionParser(String position){
+    public  static Rover roverPositionParser(String position){
         if (position == null || position.isEmpty()){
             throw new IllegalArgumentException("Enter a valid input");
         }
@@ -17,6 +17,6 @@ public class RoverPositionParser {
         if (x<0 || y<0){
             throw new IllegalArgumentException("Input cannot be negative");
         }
-        return new RoverPosition(x,y,facing);
+        return new Rover(x,y,facing);
     }
 }
