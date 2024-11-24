@@ -5,66 +5,69 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class RoverPositionTest {
+class RoverTest {
     @Test
     @DisplayName("Returns correct direction when rotated left")
     void returnCorrectDirectionWhenRotatedLeft(){
         //starting point
-        RoverPosition roverPosition = new RoverPosition(0,0,CompassDirection.N);
+        Position position = new Position(0,0,CompassDirection.N);
+        
+        
+        position.move('L');
+        assertEquals(CompassDirection.W, position.getFacing());
 
-        roverPosition.move('L');
-        assertEquals(CompassDirection.W, roverPosition.getFacing());
+        position.move('L');
+        assertEquals(CompassDirection.S, position.getFacing());
 
-        roverPosition.move('L');
-        assertEquals(CompassDirection.S, roverPosition.getFacing());
+        position.move('L');
+        assertEquals(CompassDirection.E, position.getFacing());
 
-        roverPosition.move('L');
-        assertEquals(CompassDirection.E, roverPosition.getFacing());
-
-        roverPosition.move('L');
-        assertEquals(CompassDirection.N, roverPosition.getFacing());
+        position.move('L');
+        assertEquals(CompassDirection.N, position.getFacing());
     }
 
     @Test
     @DisplayName("Returns correct direction when rotated right")
     void returnCorrectDirectionWhenRotatedRight() {
         //starting point
-        RoverPosition roverPosition = new RoverPosition(0,0,CompassDirection.N);
-        roverPosition.move('R');
-        assertEquals(CompassDirection.E, roverPosition.getFacing());
+        Position position = new Position(0,0,CompassDirection.N);
 
-        roverPosition.move('R');
-        assertEquals(CompassDirection.S, roverPosition.getFacing());
+        position.move('R');
+        assertEquals(CompassDirection.E, position.getFacing());
 
-        roverPosition.move('R');
-        assertEquals(CompassDirection.W, roverPosition.getFacing());
+        position.move('R');
+        assertEquals(CompassDirection.S, position.getFacing());
 
-        roverPosition.move('R');
-        assertEquals(CompassDirection.N, roverPosition.getFacing());
+        position.move('R');
+        assertEquals(CompassDirection.W, position.getFacing());
+
+        position.move('R');
+        assertEquals(CompassDirection.N, position.getFacing());
     }
 
     @Test
     @DisplayName("Returns correct direction when moved")
     void returnsCorrectDirectionWhenMoved() {
-        RoverPosition roverPosition = new RoverPosition(0,0,CompassDirection.N);
-        roverPosition.move('M');
-        assertEquals(0, roverPosition.getX());
-        assertEquals(1, roverPosition.getY());
+        Position position = new Position(0,0,CompassDirection.N);
 
-        roverPosition.move('R'); // Face East
-        roverPosition.move('M');
-        assertEquals(1, roverPosition.getX());
-        assertEquals(1, roverPosition.getY());
+        position.move('M');
+        assertEquals(0, position.getX());
+        assertEquals(1, position.getY());
 
-        roverPosition.move('R'); // Face South
-        roverPosition.move('M');
-        assertEquals(1, roverPosition.getX());
-        assertEquals(0, roverPosition.getY());
+        position.move('R'); // Face East
+        position.move('M');
+        assertEquals(1, position.getX());
+        assertEquals(1, position.getY());
 
-        roverPosition.move('R'); // Face West
-        roverPosition.move('M');
-        assertEquals(0, roverPosition.getX());
-        assertEquals(0, roverPosition.getY());
+        position.move('R'); // Face South
+        position.move('M');
+        assertEquals(1, position.getX());
+        assertEquals(0, position.getY());
+
+        position.move('R'); // Face West
+        position.move('M');
+        assertEquals(0, position.getX());
+        assertEquals(0, position.getY());
 
     }
 }
